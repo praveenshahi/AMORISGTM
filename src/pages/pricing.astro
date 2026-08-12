@@ -1,0 +1,202 @@
+---
+import Base from '../layouts/Base.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import FAQ from '../components/FAQ.astro';
+
+const title = "Pricing & Service Models | Amoris — Done With You vs Done For You";
+const description = "Two engagement models for GTM automation. Done With You (your stack, 6 weeks) or Done For You (full system design, 6 weeks). Both deliver ownership and control.";
+
+const modes = [
+  {
+    id: "done-with-you",
+    name: "Done With You",
+    tagline: "Deploy on your existing stack",
+    delivery: "6 weeks",
+    bestFor: "Teams with existing infrastructure and engineering capacity",
+    includes: [
+      "Architecture design for your stack",
+      "Implementation support and training",
+      "Post-go-live iteration (4 weeks)",
+      "Full documentation and handoff",
+    ],
+    meaning: "You own infrastructure, tools, and decisions. Amoris handles GTM logic and deployment.",
+    color: "card-gold",
+  },
+  {
+    id: "done-for-you",
+    name: "Done For You",
+    tagline: "Full system design & deployment",
+    delivery: "6 weeks",
+    bestFor: "Teams wanting turnkey automation with no infrastructure decisions",
+    includes: [
+      "Full stack design (LangGraph, Clay, n8n, etc.)",
+      "End-to-end build and deployment",
+      "Self-hosted on your VPC",
+      "8 weeks post-go-live iteration",
+      "Training and documentation",
+    ],
+    meaning: "Amoris designs and builds. You own everything after go-live. Zero vendor lock-in.",
+    color: "card-gold",
+  },
+];
+
+const faqs = [
+  {
+    q: "What's the difference in cost?",
+    a: "Done With You leverages your existing infrastructure and tools, which typically reduces implementation scope and time. Done For You includes full stack design and setup, which is a larger engagement. Contact us for specific pricing based on your project scope.",
+  },
+  {
+    q: "Can we switch modes after we start?",
+    a: "Yes. The methodology is the same in both modes — the ownership and infrastructure decisions change. We can pivot if your needs or constraints shift during the engagement.",
+  },
+  {
+    q: "Is 6 weeks real?",
+    a: "Yes. Both engagements run concurrent tracks: audit (problem discovery), design (architecture), and build (implementation). Concurrent execution is how we deliver in 6 weeks.",
+  },
+  {
+    q: "What if we need more than 6 weeks?",
+    a: "6 weeks gets you to production with core functionality. Post-go-live iteration extends this — we optimize, add features, and train your team based on real usage. Most clients continue iterating 8-12 weeks post-launch.",
+  },
+];
+---
+
+<Base title={title} description={description}>
+
+<section class="pr-head">
+  <Breadcrumbs crumbs={[{ label: 'Home', href: '/' }, { label: 'Pricing' }]} />
+  <p class="section-eyebrow reveal">Service Models</p>
+  <h1 class="reveal">Two ways to build your GTM automation</h1>
+  <p class="pr-lede reveal reveal-d1">
+    Whether you bring infrastructure or need turnkey, both engagements deliver in 6 weeks and leave you in control.
+    The methodology is identical — what changes is ownership and tech decisions.
+  </p>
+</section>
+
+<!-- MODES COMPARISON -->
+<section class="pr-modes">
+  <div class="grid-2 pr-modes-grid">
+    {modes.map((mode, i) => (
+      <div class={`card ${mode.color} reveal reveal-d${i}`} id={mode.id}>
+        <div class="pr-mode-head">
+          <h2 class="pr-mode-name">{mode.name}</h2>
+          <p class="pr-mode-tagline">{mode.tagline}</p>
+          <div class="pr-mode-delivery">
+            <span class="pr-delivery-badge">Delivery: {mode.delivery}</span>
+          </div>
+        </div>
+
+        <div class="pr-mode-body">
+          <div class="pr-mode-section">
+            <p class="pr-section-label">Best for</p>
+            <p class="pr-section-text">{mode.bestFor}</p>
+          </div>
+
+          <div class="pr-mode-section">
+            <p class="pr-section-label">What's included</p>
+            <ul class="pr-mode-list">
+              {mode.includes.map(item => <li>{item}</li>)}
+            </ul>
+          </div>
+
+          <div class="pr-mode-section pr-mode-meaning">
+            <p class="pr-section-label">What it means</p>
+            <p class="pr-section-text">{mode.meaning}</p>
+          </div>
+        </div>
+      </div>
+    ))}
+  </div>
+</section>
+
+<!-- CTA SECTION -->
+<section class="pr-cta-section">
+  <p class="section-eyebrow reveal">Ready?</p>
+  <h2 class="reveal">Let's discuss which model fits your team.</h2>
+  <div class="pr-cta-buttons reveal">
+    <a href="mailto:shahi@amoris.in" class="btn btn-primary">Email us</a>
+    <a href="https://wa.me/919100933191?text=I'm%20interested%20in%20learning%20about%20Amoris%20GTM%20automation.%20Which%20model%20would%20be%20a%20fit?" class="btn btn-outline" target="_blank" rel="noopener">WhatsApp</a>
+  </div>
+</section>
+
+<!-- FAQ SECTION -->
+<section id="faq">
+  <p class="section-eyebrow reveal">Common questions</p>
+  <h2 class="reveal">Before you get in touch</h2>
+  <div class="pr-faq reveal">
+    <FAQ items={faqs} />
+  </div>
+</section>
+
+</Base>
+
+<style>
+  .pr-head { padding-top: 88px; padding-bottom: 24px; }
+  .pr-head h1 { margin: 12px 0 24px; }
+  .pr-lede { font-size: 1.05rem; max-width: 70ch; }
+
+  .pr-modes { padding-top: 56px; padding-bottom: 56px; border-top: 1px solid var(--border); }
+  .pr-modes-grid { gap: 32px; align-items: start; margin-bottom: 40px; }
+
+  .pr-mode-head { margin-bottom: 28px; }
+  .pr-mode-name { margin: 0 0 8px; font-size: 1.3rem; }
+  .pr-mode-tagline { font-size: 1rem; color: var(--text-dim); margin: 0 0 16px; }
+
+  .pr-mode-delivery { margin-top: 12px; }
+  .pr-delivery-badge {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 6px 12px;
+    border: 1px solid rgba(240,168,36,0.28);
+    border-radius: var(--radius-pill);
+    color: var(--gold);
+  }
+
+  .pr-mode-body { display: flex; flex-direction: column; gap: 20px; }
+
+  .pr-mode-section { }
+  .pr-section-label {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin: 0 0 8px 0;
+  }
+  .pr-section-text { font-size: 0.95rem; margin: 0; line-height: 1.6; color: var(--text-dim); }
+
+  .pr-mode-list { list-style: none; margin: 0; padding: 0; }
+  .pr-mode-list li {
+    font-size: 0.93rem;
+    padding-left: 20px;
+    margin-bottom: 8px;
+    position: relative;
+    color: var(--text-dim);
+    line-height: 1.5;
+  }
+  .pr-mode-list li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+    font-weight: 600;
+  }
+
+  .pr-mode-meaning { padding-top: 12px; border-top: 1px solid rgba(240,168,36,0.12); }
+
+  .pr-cta-section { padding: 60px 48px; text-align: center; border-top: 1px solid var(--border); }
+  .pr-cta-section h2 { margin-top: 12px; margin-bottom: 28px; }
+
+  .pr-cta-buttons { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+
+  .pr-faq { margin-top: 32px; max-width: 78ch; }
+
+  @media (max-width: 900px) {
+    .pr-modes-grid { gap: 24px; }
+    .pr-cta-section { padding: 40px 24px; }
+    .pr-cta-buttons { flex-direction: column; }
+    .pr-cta-buttons .btn { width: 100%; }
+  }
+</style>

@@ -1,6 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
 import FAQ from '../components/FAQ.astro';
+import LogoTicker from '../components/LogoTicker.astro';
 
 const title = "AI GTM Systems That Actually Scale | Amoris — Agentic Automation for B2B Revenue Teams";
 const description = "Amoris designs and deploys agentic AI systems for B2B go-to-market teams. From audit to orchestration to live systems. LangGraph, Clay enrichment, n8n automation. Self-hosted, customer-owned.";
@@ -86,23 +87,8 @@ const faqs = [
   </ul>
 </section>
 
-<!-- PROOF NUMBERS -->
-<section class="hm-stats" aria-label="Track record">
-  <div class="grid-3">
-    <div class="card reveal">
-      <div class="hm-stat-v"><span class="count-up" data-target="120" data-prefix="$" data-suffix="K+">$120K+</span></div>
-      <p class="hm-stat-l">Net-new revenue per month in prior revenue leadership role.</p>
-    </div>
-    <div class="card reveal reveal-d1">
-      <div class="hm-stat-v"><span class="count-up" data-target="150" data-suffix="+">150+</span></div>
-      <p class="hm-stat-l">Person sales organisation built and led — process designed, not just headcount added.</p>
-    </div>
-    <div class="card reveal reveal-d2">
-      <div class="hm-stat-v"><span class="count-up" data-target="3.5" data-prefix="₹" data-suffix="Cr">₹3.5Cr</span></div>
-      <p class="hm-stat-l">ARR scaled from zero with a 30-person team. Operational leverage, proven at scale.</p>
-    </div>
-  </div>
-</section>
+<!-- EXPERIENCE LOGOS -->
+<LogoTicker />
 
 <!-- METHODOLOGY -->
 <section id="how">
@@ -255,17 +241,6 @@ const faqs = [
   .hm-cta { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 44px; }
   .hm-stack { display: flex; gap: 8px; flex-wrap: wrap; list-style: none; }
 
-  .hm-stats { padding-top: 0; padding-bottom: 80px; }
-  .hm-stat-v {
-    font-family: var(--font-display);
-    font-size: clamp(2rem, 4vw, 2.8rem);
-    font-weight: 700;
-    color: var(--gold);
-    line-height: 1.1;
-    margin-bottom: 10px;
-    font-variant-numeric: tabular-nums;
-  }
-  .hm-stat-l { font-size: 0.92rem; margin: 0; }
 
   .hm-section-lede { max-width: 62ch; margin: 20px 0 48px; font-size: 1.02rem; }
 

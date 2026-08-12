@@ -22,6 +22,23 @@ const softwareSchema = JSON.stringify({
   "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
 });
 
+const offerings = [
+  {
+    id: "done-with-you",
+    name: "Done With You",
+    tagline: "Deploy on your existing stack",
+    description: "We work with your teams to design and deploy an MVP on your infrastructure in 6 weeks. You keep tech decisions. We handle architecture, training, and handoff.",
+    highlights: ["Shorter engagement", "Your existing tools", "Lower starting cost"],
+  },
+  {
+    id: "done-for-you",
+    name: "Done For You",
+    tagline: "Full system design & deployment",
+    description: "We design the complete stack (LangGraph, Clay, n8n, etc.), build it, deploy it, and hand you ownership in 6 weeks. No guesswork. Full control after go-live.",
+    highlights: ["Production-grade stack", "Full ownership", "End-to-end support"],
+  },
+];
+
 const products = [
   {
     id: "practice",
@@ -131,7 +148,75 @@ const faqs = [
   </p>
 </section>
 
-{products.map((p, i) => (
+{products.slice(0, 1).map((p, i) => (
+  <section class="pr-item" id={p.id}>
+    <div class="pr-item-head reveal">
+      <span class="section-eyebrow">{p.kicker}</span>
+      <h2>{p.name}</h2>
+      <p class="pr-headline">{p.headline}</p>
+      <span class={`pr-status pr-status-${p.statusTone}`}>
+        <span class="live-dot" aria-hidden="true"></span>{p.status}
+      </span>
+    </div>
+
+    <div class="grid-2 pr-body">
+      <div class="reveal">
+        <p class="pr-what">{p.what}</p>
+        <div class="pr-sub">How it works</div>
+        <ul class="pr-steps">
+          {p.steps.map(s => <li>{s}</li>)}
+        </ul>
+        {p.links.length > 0 && (
+          <div class="pr-links">
+            {p.links.map(l => (
+              <a
+                href={l.href}
+                class="btn btn-outline"
+                target={l.href.startsWith('http') ? '_blank' : undefined}
+                rel={l.href.startsWith('http') ? 'noopener' : undefined}
+              >{l.label} {l.href.startsWith('http') ? '↗' : '→'}</a>
+            ))}
+          </div>
+        )}
+      </div>
+
+      <div class="reveal reveal-d1">
+        <div class="card card-gold">
+          <div class="card-label">Stack</div>
+          <ul class="pr-stack">
+            {p.stack.map(s => <li class="tag">{s}</li>)}
+          </ul>
+          <div class="card-label pr-why">Why it matters</div>
+          <p class="pr-proof">{p.proof}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+))}
+
+<!-- ENGAGEMENT MODELS -->
+<section class="pr-offerings">
+  <p class="section-eyebrow reveal">How Amoris works</p>
+  <h2 class="reveal">Two engagement models</h2>
+  <p class="pr-offerings-lede reveal">Both deliver in 6 weeks. Both leave you in control. The methodology is identical — what changes is ownership and infrastructure decisions.</p>
+
+  <div class="grid-2 pr-offerings-grid">
+    {offerings.map((o, i) => (
+      <div class={`card card-gold reveal reveal-d${i}`}>
+        <h3 class="pr-offering-name">{o.name}</h3>
+        <p class="pr-offering-tagline">{o.tagline}</p>
+        <p class="pr-offering-desc">{o.description}</p>
+        <ul class="pr-offering-highlights">
+          {o.highlights.map(h => <li>{h}</li>)}
+        </ul>
+        <a href={`/pricing#${o.id}`} class="btn btn-outline">Learn more →</a>
+      </div>
+    ))}
+  </div>
+</section>
+
+<!-- REMAINING PRODUCTS -->
+{products.slice(1).map((p, i) => (
   <section class="pr-item" id={p.id}>
     <div class="pr-item-head reveal">
       <span class="section-eyebrow">{p.kicker}</span>
@@ -261,9 +346,21 @@ const faqs = [
   .pr-rules h3 { margin-bottom: 10px; font-size: 1.02rem; }
   .pr-rules p { font-size: 0.9rem; margin: 0; }
 
+  .pr-offerings { padding-top: 56px; padding-bottom: 56px; border-top: 1px solid var(--border); }
+  .pr-offerings-lede { font-size: 1rem; max-width: 70ch; margin: 20px 0 40px; }
+  .pr-offerings-grid { gap: 32px; }
+  .pr-offering-name { margin-top: 0; margin-bottom: 8px; font-size: 1.15rem; }
+  .pr-offering-tagline { font-size: 0.95rem; color: var(--text-dim); margin-bottom: 14px; }
+  .pr-offering-desc { font-size: 0.94rem; margin-bottom: 18px; line-height: 1.6; }
+  .pr-offering-highlights { list-style: none; margin: 0 0 20px 0; padding: 0; }
+  .pr-offering-highlights li { font-size: 0.9rem; padding-left: 20px; margin-bottom: 6px; position: relative; color: var(--text-dim); }
+  .pr-offering-highlights li::before { content: '✓'; position: absolute; left: 0; color: var(--gold); font-weight: 600; }
+  .pr-offerings-grid .btn { display: block; text-align: center; }
+
   .pr-faq { margin-top: 32px; max-width: 78ch; }
 
   @media (max-width: 900px) {
     .pr-body { gap: 28px; }
+    .pr-offerings-grid { gap: 24px; }
   }
 </style>
