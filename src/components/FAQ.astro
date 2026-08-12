@@ -1,0 +1,29 @@
+---
+export interface FAQItem {
+  q: string;
+  a: string;
+}
+export interface Props {
+  items: FAQItem[];
+  pageUrl?: string;
+}
+const { items, pageUrl } = Astro.props;
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": items.map(item => ({
+    "@type": "Question",
+    "name": item.q,
+    "acceptedAnswer": { "@type": "Answer", "text": item.a }
+  }))
+};
+---
+<script type="application/ld+json" set:html={JSON.stringify(schema)} />
+<div class="faq-list">
+  {items.map(item => (
+    <div class="faq-item">
+      <div class="faq-q">{item.q}</div>
+      <div class="faq-a">{item.a}</div>
+    </div>
+  ))}
+</div>

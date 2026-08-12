@@ -1,0 +1,264 @@
+---
+import Base from '../layouts/Base.astro';
+import FAQ from '../components/FAQ.astro';
+
+const title = "AI GTM Systems That Close Deals | Amoris — Agentic Automation for B2B Revenue Teams";
+const description = "Amoris designs and deploys agentic AI systems for B2B go-to-market teams. LangGraph orchestration, Clay waterfall enrichment, n8n webhook automation. Self-hosted, customer-owned.";
+
+/* The 4-beat story. A real chronology — the dates carry information,
+   which is why this is a timeline and not a set of feature cards. */
+const beats = [
+  {
+    years: "2014–2023",
+    role: "Operator",
+    body: "Ten years running revenue organisations — Amazon, Meta, and sales leadership at Great Learning and CrunchPrep. Carried the number: $120K+/month net-new, a 150-person org, ₹3.5Cr ARR built from zero.",
+  },
+  {
+    years: "2023–2025",
+    role: "Builder",
+    body: "Learned to ship production AI solo. Built and launched orbisojas — a consciousness-and-AI platform with real paying clients and live payments. No engineering team. No hand-off.",
+  },
+  {
+    years: "2025–2026",
+    role: "Proof",
+    body: "Joined MsgKart and built go-to-market 0→1. Closed the first clients with one SDR and zero ad spend, on a Clay + LLM + n8n stack designed end to end.",
+  },
+  {
+    years: "2026–now",
+    role: "AI GTM Engineer",
+    body: "Running Amoris and shipping LangGraph + n8n agent systems. I sell AI, and I build the AI I sell. That combination is the whole point.",
+  },
+];
+
+const phases = [
+  {
+    n: "Audit",
+    body: "We map your revenue motion end to end — outbound, qualification, hand-off, CRM sync — and find the layer where the work is repetitive and the leakage is real. You get the map whether or not you hire us.",
+    stack: ["Workflow mapping", "Leakage analysis"],
+  },
+  {
+    n: "Design",
+    body: "We design the agent orchestration: multi-step reasoning chains in LangGraph, retrieval over your own data, and waterfall enrichment that fills gaps a single provider misses.",
+    stack: ["LangGraph", "RAG pipelines", "Clay enrichment"],
+  },
+  {
+    n: "Deploy",
+    body: "We ship it into production with webhook orchestration, error handling and observability. Self-hosted on your infrastructure. You own the systems when we leave.",
+    stack: ["n8n", "PostgreSQL", "Self-hosted"],
+  },
+];
+
+const faqs = [
+  {
+    q: "What is an AI GTM engineer?",
+    a: "An AI GTM engineer designs and builds the automation layer that a revenue team runs on — agent orchestration, data enrichment, and workflow automation — rather than only configuring off-the-shelf sales tools. The role combines go-to-market judgment about which levers move revenue with the engineering ability to build and deploy the systems that pull them.",
+  },
+  {
+    q: "What does Amoris build?",
+    a: "Amoris builds agentic automation for B2B go-to-market teams: multi-step reasoning agents in LangGraph, retrieval pipelines over company data, waterfall lead enrichment with Clay and LLMs, and webhook orchestration in n8n. Every system is deployed self-hosted and owned by the client.",
+  },
+  {
+    q: "What stack does Amoris use?",
+    a: "LangGraph for agent orchestration and multi-step reasoning, Claude and other LLM APIs as the reasoning backbone, Clay for waterfall enrichment and personalisation, n8n for webhook orchestration, PostgreSQL for state and conversation memory, and Retell or ElevenLabs when a system needs voice.",
+  },
+  {
+    q: "Who is Amoris for?",
+    a: "B2B small and mid-sized businesses and startup revenue teams where the go-to-market motion is active but manual — outbound research, lead qualification, follow-up and CRM hygiene are eating senior time. Amoris works remotely with clients globally.",
+  },
+  {
+    q: "Do we own the systems Amoris builds?",
+    a: "Yes. Systems are deployed on your own infrastructure and you own them outright — the workflows, the prompts, the database, the code. There is no platform lock-in and no dependency on Amoris to keep them running.",
+  },
+];
+---
+<Base title={title} description={description}>
+
+<!-- HERO -->
+<section class="hm-hero glow-section">
+  <p class="section-eyebrow reveal">Amoris — AI GTM Agency</p>
+  <h1 class="reveal reveal-d1">AI GTM Systems<br/>That <span class="gradient-text">Close Deals</span>.</h1>
+  <p class="hm-lede reveal reveal-d2">
+    We design and deploy agentic automation for B2B revenue teams. We don't just build AI —
+    we sell AI, and we engineer the systems it runs on.
+  </p>
+  <div class="hm-cta reveal reveal-d3">
+    <a href="/products" class="btn btn-primary">See what we've built →</a>
+    <a href="https://calendly.com/praveenshahi13/30min" class="btn btn-outline" target="_blank" rel="noopener">Let's talk</a>
+  </div>
+  <ul class="hm-stack reveal reveal-d4" aria-label="Core technologies">
+    <li class="tag tag-gold">LangGraph</li>
+    <li class="tag">Clay</li>
+    <li class="tag">n8n</li>
+    <li class="tag">RAG</li>
+    <li class="tag">PostgreSQL</li>
+    <li class="tag">Retell / ElevenLabs</li>
+  </ul>
+</section>
+
+<!-- PROOF NUMBERS -->
+<section class="hm-stats" aria-label="Track record">
+  <div class="grid-3">
+    <div class="card reveal">
+      <div class="hm-stat-v"><span class="count-up" data-target="120" data-prefix="$" data-suffix="K+">$120K+</span></div>
+      <p class="hm-stat-l">Net-new revenue per month carried in a prior revenue leadership role.</p>
+    </div>
+    <div class="card reveal reveal-d1">
+      <div class="hm-stat-v"><span class="count-up" data-target="150" data-suffix="+">150+</span></div>
+      <p class="hm-stat-l">Person sales organisation built and led — process designed, not just headcount added.</p>
+    </div>
+    <div class="card reveal reveal-d2">
+      <div class="hm-stat-v"><span class="count-up" data-target="3.5" data-prefix="₹" data-suffix="Cr">₹3.5Cr</span></div>
+      <p class="hm-stat-l">ARR scaled from zero with a 30-person team. Operational leverage, proven at scale.</p>
+    </div>
+  </div>
+</section>
+
+<!-- THE JOURNEY -->
+<section id="journey">
+  <p class="section-eyebrow reveal">The journey</p>
+  <h2 class="reveal">Ten years carrying a number.<br/>Three years shipping the systems.</h2>
+  <p class="hm-section-lede reveal">
+    Most people who build AI have never carried a quota. Most people who carry a quota can't build.
+    This is how both ended up in one place.
+  </p>
+
+  <ol class="hm-beats">
+    {beats.map((b, i) => (
+      <li class={`hm-beat reveal reveal-d${i % 4}`}>
+        <div class="hm-beat-when">
+          <span class="hm-beat-years">{b.years}</span>
+          <span class="hm-beat-role">{b.role}</span>
+        </div>
+        <p class="hm-beat-body">{b.body}</p>
+      </li>
+    ))}
+  </ol>
+</section>
+
+<!-- WHAT WE DO -->
+<section id="how">
+  <p class="section-eyebrow reveal">What Amoris does</p>
+  <h2 class="reveal">Audit <span class="hm-arrow">→</span> Design <span class="hm-arrow">→</span> Deploy</h2>
+  <p class="hm-section-lede reveal">
+    We audit the go-to-market workflow, design the agent layer that removes the repetitive work,
+    and deploy it into production on your own infrastructure. Three phases, in that order, every time.
+  </p>
+
+  <div class="grid-3 hm-phases">
+    {phases.map((p, i) => (
+      <article class={`card card-gold reveal reveal-d${i + 1}`}>
+        <div class="card-label">{p.n}</div>
+        <p class="hm-phase-body">{p.body}</p>
+        <ul class="hm-phase-stack">
+          {p.stack.map(s => <li class="tag">{s}</li>)}
+        </ul>
+      </article>
+    ))}
+  </div>
+</section>
+
+<!-- RESULTS -->
+<section id="results">
+  <p class="section-eyebrow reveal">Results</p>
+  <h2 class="reveal">Running in production.<br/>Not in a slide deck.</h2>
+  <div class="grid-2 hm-results">
+    <div class="card reveal">
+      <h3>Closed with one SDR, zero ad spend</h3>
+      <p>At MsgKart, go-to-market was built 0→1 on an AI-assisted outbound stack — Clay enrichment, LLM personalisation, n8n orchestration. First clients closed with a single SDR and no marketing budget.</p>
+    </div>
+    <div class="card reveal reveal-d1">
+      <h3>Systems that outlive the engagement</h3>
+      <p>Every deployment is self-hosted and customer-owned, running 24/7 with error handling and observability built in. When the engagement ends, the system keeps working and the client keeps the keys.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <p class="section-eyebrow reveal">Common questions</p>
+  <h2 class="reveal">What people ask before the first call</h2>
+  <div class="hm-faq reveal">
+    <FAQ items={faqs} />
+  </div>
+</section>
+
+</Base>
+
+<style>
+  /* Namespaced hm-* so nothing collides with tokens.css */
+  .hm-hero { padding-top: 96px; padding-bottom: 72px; }
+  .hm-hero h1 { margin-bottom: 24px; }
+  .hm-lede {
+    font-size: 1.15rem;
+    max-width: 60ch;
+    margin-bottom: 36px;
+  }
+  .hm-cta { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 44px; }
+  .hm-stack { display: flex; gap: 8px; flex-wrap: wrap; list-style: none; }
+
+  .hm-stats { padding-top: 0; padding-bottom: 80px; }
+  .hm-stat-v {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 4vw, 2.8rem);
+    font-weight: 700;
+    color: var(--gold);
+    line-height: 1.1;
+    margin-bottom: 10px;
+    font-variant-numeric: tabular-nums;
+  }
+  .hm-stat-l { font-size: 0.92rem; margin: 0; }
+
+  .hm-section-lede { max-width: 62ch; margin: 20px 0 48px; font-size: 1.02rem; }
+
+  /* Timeline — a real chronology, so the rail and dates carry meaning */
+  .hm-beats { list-style: none; position: relative; padding-left: 28px; }
+  .hm-beats::before {
+    content: '';
+    position: absolute;
+    left: 5px; top: 6px; bottom: 6px;
+    width: 1px;
+    background: linear-gradient(180deg, var(--gold), rgba(240,168,36,0.12));
+  }
+  .hm-beat { position: relative; padding-bottom: 36px; }
+  .hm-beat:last-child { padding-bottom: 0; }
+  .hm-beat::before {
+    content: '';
+    position: absolute;
+    left: -28px; top: 7px;
+    width: 11px; height: 11px;
+    border-radius: 50%;
+    background: var(--bg);
+    border: 2px solid var(--gold);
+  }
+  .hm-beat-when { display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap; margin-bottom: 8px; }
+  .hm-beat-years {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    color: var(--gold);
+    letter-spacing: 0.04em;
+    font-variant-numeric: tabular-nums;
+  }
+  .hm-beat-role {
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--text);
+  }
+  .hm-beat-body { max-width: 66ch; margin: 0; }
+
+  .hm-arrow { color: var(--gold); font-weight: 400; }
+  .hm-phases { margin-top: 8px; align-items: start; }
+  .hm-phase-body { font-size: 0.95rem; margin-bottom: 18px; }
+  .hm-phase-stack { display: flex; gap: 6px; flex-wrap: wrap; list-style: none; }
+
+  .hm-results { margin-top: 40px; }
+  .hm-results h3 { margin-bottom: 12px; }
+  .hm-results p { font-size: 0.95rem; margin: 0; }
+
+  .hm-faq { margin-top: 32px; max-width: 78ch; }
+
+  @media (max-width: 860px) {
+    .hm-hero { padding-top: 72px; }
+    .hm-lede { font-size: 1.05rem; }
+  }
+</style>

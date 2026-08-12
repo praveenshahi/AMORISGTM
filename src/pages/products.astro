@@ -1,0 +1,268 @@
+---
+import Base from '../layouts/Base.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import FAQ from '../components/FAQ.astro';
+
+const title = "Products & Shipped Systems | Amoris — LangGraph AI SDR, intel-echo, Agentic GTM Automation";
+const description = "What Amoris has actually shipped: custom agentic GTM automation, a LangGraph + n8n voice AI SDR agent, the intel-echo npm package for LLM reasoning observability, and orbisojas.";
+
+/* intel-echo is a real, published package. Schema makes it machine-verifiable. */
+const softwareSchema = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "intel-echo",
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Node.js",
+  "softwareVersion": "0.1.0",
+  "description": "A compiler for reasoning — audits an AI conversation for where the reasoning exceeded its mandate. Detects authority and mandate drift in production LLM pipelines.",
+  "url": "https://www.npmjs.com/package/intel-echo",
+  "downloadUrl": "https://www.npmjs.com/package/intel-echo",
+  "codeRepository": "https://github.com/praveenshahi/IntelEcho",
+  "author": { "@id": "https://amoris.in/founder#person" },
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+});
+
+const products = [
+  {
+    id: "practice",
+    kicker: "Client engagements",
+    name: "Amoris AI Automation Practice",
+    headline: "Custom agentic automation for B2B revenue teams",
+    status: "Production · active clients",
+    statusTone: "live",
+    what: "We audit your go-to-market workflow, design an agent orchestration layer, and deploy it end to end on your own infrastructure. The output is a working system, not a recommendations deck.",
+    stack: ["LangGraph", "Claude / OpenAI / Gemini", "Clay", "n8n", "PostgreSQL", "Retell / ElevenLabs"],
+    steps: [
+      "Audit — map the revenue motion: outbound, qualification, hand-off, CRM sync",
+      "Design — build the agent orchestration and enrichment pipelines",
+      "Deploy — self-hosted, customer-owned, iterated after go-live",
+    ],
+    proof: "Built go-to-market 0→1 at MsgKart on a Clay + LLM + n8n stack. First clients closed with one SDR and zero ad spend.",
+    links: [],
+  },
+  {
+    id: "ai-sdr",
+    kicker: "Reference implementation",
+    name: "LangGraph + n8n AI SDR Agent",
+    headline: "Voice AI SDR with multi-step reasoning",
+    status: "Production-ready · self-hosted",
+    statusTone: "live",
+    what: "An orchestrated voice agent that calls leads, qualifies them against a real rubric, handles objections, and writes the outcome back to CRM. The reasoning is a graph, not a prompt — which is why it holds up past the second objection.",
+    stack: ["LangGraph", "n8n", "Retell", "ElevenLabs", "PostgreSQL"],
+    steps: [
+      "Agent receives lead data from the pipeline",
+      "Calls the lead over voice and runs the qualification chain",
+      "Reasons through objections with conversation memory in Postgres",
+      "Logs the outcome via n8n webhook and updates CRM with next steps",
+    ],
+    proof: "Production-grade by design: conversation memory, error handling and observability are built in rather than bolted on.",
+    links: [{ label: "GitHub", href: "https://github.com/praveenshahi" }],
+  },
+  {
+    id: "intel-echo",
+    kicker: "Open source · npm",
+    name: "intel-echo",
+    headline: "Reasoning observability for production LLM pipelines",
+    status: "Published on npm · v0.1.0",
+    statusTone: "live",
+    what: "A compiler for reasoning. It audits an AI conversation for the points where the reasoning exceeded its mandate — where a model quietly assumed authority it was never granted. Install it with npm and point it at your pipeline.",
+    stack: ["Node.js", "LLM observability", "Published package"],
+    steps: [
+      "Detects authority and mandate drift across a conversation",
+      "Measures model confidence against the evidence actually present",
+      "Produces audit-ready explanations of how a decision was reached",
+    ],
+    proof: "Public, installable and verifiable in one click. Reliability and cost are production constraints, not afterthoughts — this is the tooling that treats them that way.",
+    links: [
+      { label: "npm registry", href: "https://www.npmjs.com/package/intel-echo" },
+      { label: "GitHub", href: "https://github.com/praveenshahi/IntelEcho" },
+      { label: "Live demo", href: "/intel-echo/" },
+    ],
+  },
+  {
+    id: "orbisojas",
+    kicker: "Solo build",
+    name: "orbisojas",
+    headline: "Consciousness + AI synthesis platform",
+    status: "Paused 2025 · pivoted to GTM",
+    statusTone: "paused",
+    what: "A multi-prompt architecture for soul mirror generation, built solo end to end — product, prompts, payments. Real paying clients, live payment flow.",
+    stack: ["Multi-prompt architecture", "Payments", "Solo-built"],
+    steps: [
+      "Designed and shipped the full product without an engineering team",
+      "Ran live payments with real paying customers",
+      "Paused in 2025 to focus on GTM automation",
+    ],
+    proof: "Proof of solo production shipping, and the prompt-architecture work that directly informs the LangGraph builds today.",
+    links: [],
+  },
+];
+
+const faqs = [
+  {
+    q: "Is intel-echo really published?",
+    a: "Yes. intel-echo is published on the public npm registry at version 0.1.0 and can be installed with npm install intel-echo. The source is on GitHub and a live demo runs at amoris.in/intel-echo.",
+  },
+  {
+    q: "Do clients own the systems Amoris builds?",
+    a: "Yes. Every system is deployed on the client's own infrastructure — workflows, prompts, database and code all belong to the client. There is no platform lock-in and no ongoing dependency on Amoris to keep a system running.",
+  },
+  {
+    q: "How is an agentic system different from a Zapier or Make automation?",
+    a: "A linear automation runs the same fixed steps every time. An agentic system reasons about what to do next based on what it has already learned in the run — LangGraph holds that reasoning as a graph with state and memory, so the system can branch, retry and handle cases that were never explicitly scripted.",
+  },
+  {
+    q: "Does Amoris work with clients outside India?",
+    a: "Yes. Amoris is Bengaluru-based and works remotely with clients globally. Delivery is async-first and documentation-heavy, with IST covering morning US Eastern and evening APAC hours.",
+  },
+];
+---
+<Base title={title} description={description} schema={softwareSchema}>
+
+<section class="pr-head">
+  <Breadcrumbs crumbs={[{ label: 'Home', href: '/' }, { label: 'Products' }]} />
+  <p class="section-eyebrow reveal">Products</p>
+  <h1 class="reveal">What we've actually <span class="gradient-text">shipped</span>.</h1>
+  <p class="pr-lede reveal reveal-d1">
+    Amoris builds three kinds of systems: client engagements, open-source tools, and reference
+    implementations. Each one proves a different dimension of the work — and each one is
+    verifiable, not asserted.
+  </p>
+</section>
+
+{products.map((p, i) => (
+  <section class="pr-item" id={p.id}>
+    <div class="pr-item-head reveal">
+      <span class="section-eyebrow">{p.kicker}</span>
+      <h2>{p.name}</h2>
+      <p class="pr-headline">{p.headline}</p>
+      <span class={`pr-status pr-status-${p.statusTone}`}>
+        <span class="live-dot" aria-hidden="true"></span>{p.status}
+      </span>
+    </div>
+
+    <div class="grid-2 pr-body">
+      <div class="reveal">
+        <p class="pr-what">{p.what}</p>
+        <div class="pr-sub">How it works</div>
+        <ul class="pr-steps">
+          {p.steps.map(s => <li>{s}</li>)}
+        </ul>
+        {p.links.length > 0 && (
+          <div class="pr-links">
+            {p.links.map(l => (
+              <a
+                href={l.href}
+                class="btn btn-outline"
+                target={l.href.startsWith('http') ? '_blank' : undefined}
+                rel={l.href.startsWith('http') ? 'noopener' : undefined}
+              >{l.label} {l.href.startsWith('http') ? '↗' : '→'}</a>
+            ))}
+          </div>
+        )}
+      </div>
+
+      <div class="reveal reveal-d1">
+        <div class="card card-gold">
+          <div class="card-label">Stack</div>
+          <ul class="pr-stack">
+            {p.stack.map(s => <li class="tag">{s}</li>)}
+          </ul>
+          <div class="card-label pr-why">Why it matters</div>
+          <p class="pr-proof">{p.proof}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+))}
+
+<section class="pr-principles">
+  <p class="section-eyebrow reveal">How everything gets built</p>
+  <h2 class="reveal">Four rules, applied to every system</h2>
+  <div class="grid-4 pr-rules">
+    <div class="card reveal"><h3>Production-grade</h3><p>Error handling, logging and observability from the first commit — not added after something breaks.</p></div>
+    <div class="card reveal reveal-d1"><h3>Customer ownership</h3><p>You own the infrastructure, the code and the data. We don't hold the keys.</p></div>
+    <div class="card reveal reveal-d2"><h3>Continuous iteration</h3><p>Build once, then improve against real usage. The system gets sharper after go-live.</p></div>
+    <div class="card reveal reveal-d3"><h3>Proof-first</h3><p>Every claim on this page links to something you can install, read or run.</p></div>
+  </div>
+</section>
+
+<section id="faq">
+  <p class="section-eyebrow reveal">Questions</p>
+  <h2 class="reveal">Before you get in touch</h2>
+  <div class="pr-faq reveal">
+    <FAQ items={faqs} />
+  </div>
+</section>
+
+</Base>
+
+<style>
+  .pr-head { padding-top: 88px; padding-bottom: 24px; }
+  .pr-head h1 { margin: 12px 0 24px; }
+  .pr-lede { font-size: 1.1rem; max-width: 62ch; }
+
+  .pr-item { padding-top: 56px; padding-bottom: 56px; border-top: 1px solid var(--border); }
+  .pr-item-head { margin-bottom: 32px; }
+  .pr-item-head h2 { margin: 10px 0 8px; }
+  .pr-headline { font-size: 1.05rem; color: var(--text-dim); max-width: 58ch; margin-bottom: 16px; }
+
+  .pr-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 6px 12px;
+    border-radius: var(--radius-pill);
+    border: 1px solid var(--border);
+  }
+  .pr-status-live { color: var(--success); border-color: rgba(34,197,94,0.28); }
+  .pr-status-paused { color: var(--text-dim); }
+  .pr-status-paused .live-dot { background: var(--text-muted); animation: none; }
+
+  .pr-body { gap: 40px; align-items: start; }
+  .pr-what { font-size: 1rem; margin-bottom: 26px; }
+  .pr-sub {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 12px;
+  }
+  .pr-steps { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .pr-steps li {
+    position: relative;
+    padding-left: 22px;
+    font-size: 0.94rem;
+    color: var(--text-dim);
+    line-height: 1.65;
+  }
+  .pr-steps li::before {
+    content: '';
+    position: absolute;
+    left: 2px; top: 10px;
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--gold);
+    opacity: 0.7;
+  }
+  .pr-links { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 28px; }
+  .pr-stack { display: flex; gap: 6px; flex-wrap: wrap; list-style: none; margin-bottom: 26px; }
+  .pr-why { margin-top: 4px; }
+  .pr-proof { font-size: 0.93rem; margin: 0; }
+
+  .pr-principles { border-top: 1px solid var(--border); padding-top: 64px; }
+  .pr-rules { margin-top: 36px; }
+  .pr-rules h3 { margin-bottom: 10px; font-size: 1.02rem; }
+  .pr-rules p { font-size: 0.9rem; margin: 0; }
+
+  .pr-faq { margin-top: 32px; max-width: 78ch; }
+
+  @media (max-width: 900px) {
+    .pr-body { gap: 28px; }
+  }
+</style>

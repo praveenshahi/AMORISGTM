@@ -1,0 +1,380 @@
+---
+export interface Props {
+  title: string;
+  description?: string;
+  ogTitle?: string;
+  schema?: string;
+}
+const {
+  title,
+  description = "Amoris designs and deploys agentic AI systems for B2B go-to-market teams — LangGraph orchestration, Clay enrichment, n8n automation. Built by Praveen Shahi, AI GTM Engineer.",
+  ogTitle,
+  schema,
+} = Astro.props;
+
+const SITE = 'https://amoris.in';
+const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
+const parts = Astro.url.pathname.split('/').filter(Boolean);
+const breadcrumbs = [
+  { name: 'Home', item: `${SITE}/` },
+  ...parts.map((part: string, i: number) => ({
+    name: part.split('-').map((w: string) => w.charAt(0).toUpperCase() + w.slice(1)).join(' '),
+    item: `${SITE}/` + parts.slice(0, i + 1).join('/') + '/',
+  })),
+];
+
+/* ── Entity graph ──────────────────────────────────────────────
+   Person + Organization + WebSite emitted as one @graph with @id
+   cross-references, so search and answer engines resolve "Praveen
+   Shahi" and "Amoris" as linked entities rather than loose strings.
+   `sameAs` is what ties this site to the existing profiles.        */
+const entityGraph = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": `${SITE}/founder#person`,
+      "name": "Praveen Shahi",
+      "givenName": "Praveen",
+      "familyName": "Shahi",
+      "jobTitle": "AI GTM Engineer",
+      "description": "Praveen Shahi is an AI GTM Engineer who designs and deploys agentic automation for B2B revenue teams. Ten years running revenue organisations, now building the AI systems that make revenue scale.",
+      "url": `${SITE}/founder`,
+      "email": "mailto:shahi@amoris.in",
+      "telephone": "+91-9100-933-191",
+      "address": { "@type": "PostalAddress", "addressLocality": "Bengaluru", "addressCountry": "IN" },
+      "knowsAbout": [
+        "AI GTM Engineering",
+        "Agentic automation",
+        "LangGraph",
+        "Clay",
+        "n8n",
+        "RAG pipelines",
+        "Go-to-market strategy",
+        "Sales operations",
+        "Voice AI agents",
+        "LLM observability"
+      ],
+      "sameAs": [
+        "https://www.linkedin.com/in/praveenshahi13",
+        "https://github.com/praveenshahi",
+        "https://www.npmjs.com/package/intel-echo"
+      ],
+      "worksFor": { "@id": `${SITE}/#organization` }
+    },
+    {
+      "@type": "Organization",
+      "@id": `${SITE}/#organization`,
+      "name": "Amoris",
+      "url": SITE,
+      "description": "Amoris is an AI GTM agency that designs and deploys agentic automation for B2B revenue teams — audit, design, deploy. Systems are self-hosted and customer-owned.",
+      "founder": { "@id": `${SITE}/founder#person` },
+      "areaServed": ["IN", "US", "GB", "SG", "AE"],
+      "address": { "@type": "PostalAddress", "addressLocality": "Bengaluru", "addressCountry": "IN" },
+      "contactPoint": [
+        {
+          "@type": "ContactPoint",
+          "contactType": "sales",
+          "email": "shahi@amoris.in",
+          "availableLanguage": ["English", "Hindi"],
+          "url": `${SITE}/#contact`
+        }
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": `${SITE}/#website`,
+      "name": "Amoris",
+      "url": SITE,
+      "description": "AI GTM systems for B2B revenue teams — agentic automation, built and deployed end to end.",
+      "publisher": { "@id": `${SITE}/#organization` }
+    }
+  ]
+};
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Flags JS as available before first paint, so the scroll-reveal start
+       state only applies when there is JS to finish the animation. -->
+  <script is:inline>document.documentElement.classList.add('js');</script>
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <link rel="canonical" href={canonicalUrl} />
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+  <meta property="og:title" content={ogTitle || title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:url" content={canonicalUrl} />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Amoris" />
+  <meta property="og:image" content={`${SITE}/og/og-default.png`} />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="theme-color" content="#0A0A0B" />
+
+  <!-- Fonts — non-blocking -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" />
+  <link rel="stylesheet" media="print" onload="this.media='all'" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" />
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" /></noscript>
+
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="/styles/tokens.css" />
+
+  <!-- Google Analytics 4 — is:inline keeps gtag on window; without it
+       Astro hoists this into a module and gtag stops being global. -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-6FCMQYGWP2"></script>
+  <script is:inline>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-6FCMQYGWP2');
+  </script>
+
+  <!-- Microsoft Clarity -->
+  <script is:inline>
+    (function(c,l,a,r,i,t,y){
+      c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+      t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+      y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window,document,"clarity","script","xizt3yamet");
+  </script>
+
+  <script type="application/ld+json" set:html={JSON.stringify(entityGraph)} />
+
+  {schema && <Fragment set:html={`<script type="application/ld+json">${schema}</script>`} />}
+
+  {parts.length > 0 && (
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": breadcrumbs.map((b, i) => ({
+        "@type": "ListItem",
+        "position": i + 1,
+        "name": b.name,
+        "item": b.item,
+      })),
+    })} />
+  )}
+</head>
+<body>
+  <!-- Scroll progress bar -->
+  <div id="scroll-progress" aria-hidden="true"></div>
+
+  <!-- Aurora background -->
+  <div id="aurora-bg" aria-hidden="true">
+    <div class="aurora-blob aurora-teal"></div>
+    <div class="aurora-blob aurora-gold"></div>
+    <div class="aurora-blob aurora-purple"></div>
+  </div>
+
+  <!-- PRODUCTS BAR -->
+  <div class="products-bar">
+    <span class="products-bar-label">Shipped</span>
+    <div class="products-bar-links">
+      <a href="/intel-echo/">Intel Echo — Reasoning Observability</a>
+      <a href="/intel-echo-gtm/">Intel Echo GTM — Messaging Loop</a>
+    </div>
+    <span class="products-bar-domain">amoris.in</span>
+  </div>
+
+  <!-- MAIN NAV -->
+  <nav class="site-nav" id="site-nav">
+    <a href="/" class="nav-logo">Amor<span>.</span>is</a>
+
+    <ul class="nav-links" id="nav-links">
+      <li><a href="/products">Products</a></li>
+      <li><a href="/founder">Founder</a></li>
+    </ul>
+
+    <a href="https://calendly.com/praveenshahi13/30min" class="nav-cta" target="_blank" rel="noopener">Let's talk →</a>
+
+    <button class="nav-hamburger" id="nav-hamburger" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- MOBILE NAV PANEL -->
+  <div class="mobile-nav" id="mobile-nav" aria-hidden="true">
+    <div class="mobile-nav-inner">
+      <div class="mobile-nav-section">
+        <div class="mobile-nav-label">Amoris</div>
+        <a href="/" class="mobile-nav-link">Home</a>
+        <a href="/products" class="mobile-nav-link">Products</a>
+        <a href="/founder" class="mobile-nav-link">Founder</a>
+      </div>
+      <div class="mobile-nav-section">
+        <div class="mobile-nav-label">Shipped</div>
+        <a href="/intel-echo/" class="mobile-nav-link">Intel Echo</a>
+        <a href="/intel-echo-gtm/" class="mobile-nav-link">Intel Echo GTM</a>
+      </div>
+      <a href="https://calendly.com/praveenshahi13/30min" class="btn btn-primary" target="_blank" rel="noopener" style="width:100%; justify-content:center; margin-top:8px;">Let's talk →</a>
+    </div>
+  </div>
+
+  <main>
+    <slot />
+  </main>
+
+  <!-- WHATSAPP FLOAT -->
+  <a href="https://wa.me/919100933191" class="wa-float" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+    </svg>
+  </a>
+
+  <!-- FOOTER -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="footer-pre-cta" id="contact">
+      <div class="footer-pre-cta-inner">
+        <div>
+          <h2 class="footer-pre-cta-heading">Want to build your <span>GTM automation?</span></h2>
+          <p class="footer-pre-cta-sub">30 minutes. We map your revenue motion and tell you exactly which layer to automate first. No deck.</p>
+        </div>
+        <div class="footer-pre-cta-actions">
+          <a href="https://calendly.com/praveenshahi13/30min" class="btn btn-primary" target="_blank" rel="noopener">Book a call →</a>
+          <a href="mailto:shahi@amoris.in" class="btn btn-outline">Email us</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-main">
+      <div class="footer-brand">
+        <div class="footer-logo">Amor<span>.</span>is</div>
+        <p class="footer-tagline">AI GTM systems that close deals.</p>
+        <p class="footer-aeo-text">Amoris is an AI GTM agency that designs and deploys agentic automation for B2B revenue teams. We audit the go-to-market motion, design agent orchestration with LangGraph and RAG, and deploy end to end with Clay enrichment and n8n webhook orchestration. Systems are self-hosted and customer-owned.</p>
+        <div class="footer-trust">
+          <span class="footer-trust-badge">Self-hosted</span>
+          <span class="footer-trust-badge">Customer-owned</span>
+          <span class="footer-trust-badge">Remote, global</span>
+        </div>
+      </div>
+
+      <div>
+        <div class="footer-col-title">Amoris</div>
+        <nav class="footer-col-links" aria-label="Site pages">
+          <a href="/">Home</a>
+          <a href="/products">Products</a>
+          <a href="/founder">Founder</a>
+        </nav>
+      </div>
+
+      <div>
+        <div class="footer-col-title">Shipped</div>
+        <nav class="footer-col-links" aria-label="Shipped products">
+          <a href="/intel-echo/">Intel Echo</a>
+          <a href="/intel-echo-gtm/">Intel Echo GTM</a>
+          <a href="https://www.npmjs.com/package/intel-echo" target="_blank" rel="noopener">intel-echo on npm ↗</a>
+          <a href="https://github.com/praveenshahi" target="_blank" rel="noopener">GitHub ↗</a>
+        </nav>
+      </div>
+
+      <div>
+        <div class="footer-col-title">Get in touch</div>
+        <nav class="footer-col-links" aria-label="Contact">
+          <a href="https://calendly.com/praveenshahi13/30min" target="_blank" rel="noopener">Book a call</a>
+          <a href="mailto:shahi@amoris.in">shahi@amoris.in</a>
+          <a href="https://www.linkedin.com/in/praveenshahi13" target="_blank" rel="noopener">LinkedIn ↗</a>
+          <a href="https://wa.me/919100933191" target="_blank" rel="noopener" style="color:var(--success);">WhatsApp</a>
+        </nav>
+      </div>
+    </div>
+
+    <div class="footer-bottom-bar">
+      <span>© 2026 Amoris. All rights reserved.</span>
+      <span class="footer-bottom-center">AI GTM systems for B2B revenue teams</span>
+      <span>Bengaluru · Remote, global</span>
+    </div>
+  </footer>
+
+  <script>
+    /* ── 1. Scroll progress bar ── */
+    const progressBar = document.getElementById('scroll-progress') as HTMLElement;
+    window.addEventListener('scroll', () => {
+      const d = document.documentElement;
+      const pct = (d.scrollTop / (d.scrollHeight - d.clientHeight)) * 100;
+      if (progressBar) progressBar.style.width = pct + '%';
+    }, { passive: true });
+
+    /* ── 2. Scroll reveal (respects reduced motion) ── */
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const revealEls = document.querySelectorAll('.reveal');
+    if (reduceMotion) {
+      revealEls.forEach(el => el.classList.add('visible'));
+    } else {
+      const obs = new IntersectionObserver(entries => {
+        entries.forEach(e => {
+          if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
+        });
+      }, { threshold: 0.07, rootMargin: '0px 0px -36px 0px' });
+      revealEls.forEach(el => obs.observe(el));
+    }
+
+    /* ── 3. FAQ accordion ── */
+    document.querySelectorAll('.faq-q').forEach(q => {
+      q.addEventListener('click', () => q.closest('.faq-item')?.classList.toggle('open'));
+      q.addEventListener('keydown', (e) => {
+        const ev = e as KeyboardEvent;
+        if (ev.key === 'Enter' || ev.key === ' ') {
+          ev.preventDefault();
+          q.closest('.faq-item')?.classList.toggle('open');
+        }
+      });
+    });
+
+    /* ── 4. Active nav link ── */
+    const path = window.location.pathname;
+    document.querySelectorAll('.nav-links a, .mobile-nav a').forEach(a => {
+      const href = a.getAttribute('href') || '';
+      if (href !== '/' && path.startsWith(href)) a.classList.add('active');
+    });
+
+    /* ── 5. Mobile nav toggle ── */
+    const hamburger = document.getElementById('nav-hamburger') as HTMLElement;
+    const mobileNav = document.getElementById('mobile-nav') as HTMLElement;
+    hamburger?.addEventListener('click', e => {
+      e.stopPropagation();
+      const open = mobileNav.classList.toggle('open');
+      hamburger.classList.toggle('open', open);
+      hamburger.setAttribute('aria-expanded', String(open));
+      mobileNav.setAttribute('aria-hidden', String(!open));
+    });
+    document.addEventListener('click', e => {
+      if (!mobileNav?.contains(e.target as Node) && !hamburger?.contains(e.target as Node)) {
+        mobileNav?.classList.remove('open');
+        hamburger?.classList.remove('open');
+        hamburger?.setAttribute('aria-expanded', 'false');
+      }
+    });
+
+    /* ── 6. Stat counter ── */
+    const cObs = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        const el = entry.target as HTMLElement;
+        const target = parseFloat(el.dataset.target || '0');
+        const suffix = el.dataset.suffix || '';
+        const prefix = el.dataset.prefix || '';
+        if (reduceMotion) {
+          el.textContent = prefix + target + suffix;
+          cObs.unobserve(el);
+          return;
+        }
+        const start = performance.now();
+        const dur = 1400;
+        function step(now: number) {
+          const p = Math.min((now - start) / dur, 1);
+          const ease = 1 - Math.pow(1 - p, 3);
+          el.textContent = prefix + (target % 1 !== 0 ? (target * ease).toFixed(1) : Math.round(target * ease)) + suffix;
+          if (p < 1) requestAnimationFrame(step);
+        }
+        requestAnimationFrame(step);
+        cObs.unobserve(el);
+      });
+    }, { threshold: 0.5 });
+    document.querySelectorAll('.count-up').forEach(el => cObs.observe(el));
+  </script>
+</body>
+</html>

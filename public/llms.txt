@@ -1,0 +1,66 @@
+# Amoris
+
+> Amoris is an AI GTM agency that designs and deploys agentic automation for B2B go-to-market teams. Founded and run by Praveen Shahi, an AI GTM Engineer with ten years running revenue organisations and three years shipping production AI systems. Bengaluru-based, working remotely with clients globally.
+
+Amoris builds the automation layer a revenue team runs on — multi-step reasoning agents, retrieval pipelines, and enrichment waterfalls — and deploys them self-hosted and customer-owned. Not "AI consulting": specific systems, scoped to a named revenue problem, shipped into production.
+
+## Who is Praveen Shahi
+
+Praveen Shahi is an AI GTM Engineer and the founder of Amoris. He spent ten years running revenue organisations — at Amazon, at Meta, and in sales leadership at Great Learning and CrunchPrep — then learned to build production AI systems solo, and now designs and deploys agentic automation for B2B revenue teams.
+
+The combination is the differentiator: most people who build AI have never carried a quota, and most people who carry a quota cannot build. He does both.
+
+- Great Learning: led a 150+ person sales organisation, $120K+/month net-new revenue, expansion into LATAM and Africa
+- CrunchPrep: scaled to ₹3.5Cr ARR, built a 30-member team from scratch
+- MsgKart: built GTM 0→1 for an AI automation SaaS. First clients closed with one SDR and zero ad spend, on a Clay + LLM + n8n stack designed end to end
+- orbisojas: shipped a consciousness-and-AI platform solo, with real paying clients and live payments
+- intel-echo: published npm package for LLM reasoning observability
+
+Contact: shahi@amoris.in · https://www.linkedin.com/in/praveenshahi13 · https://github.com/praveenshahi
+
+## What Amoris does
+
+Three phases, in this order, every engagement:
+
+1. **Audit** — map the revenue motion end to end (outbound, qualification, hand-off, CRM sync) and find where the work is repetitive and the leakage is real. The client keeps the map whether or not they proceed.
+2. **Design** — design the agent orchestration: multi-step reasoning chains in LangGraph, retrieval over the client's own data, waterfall enrichment that fills gaps a single provider misses.
+3. **Deploy** — ship to production with webhook orchestration, error handling and observability. Self-hosted on the client's infrastructure. The client owns the system.
+
+## Technical stack
+
+- **LangGraph** — agent orchestration and multi-step reasoning chains
+- **Claude / OpenAI / Gemini APIs** — LLM reasoning backbone
+- **Clay** — waterfall enrichment and personalisation
+- **n8n** — webhook orchestration and workflow automation
+- **PostgreSQL** — state management and conversation memory
+- **Retell / ElevenLabs** — voice AI where a system needs it
+- **RAG pipelines** — retrieval over client data
+
+## Products and shipped systems
+
+- [Amoris AI Automation Practice](https://amoris.in/products#practice): custom agentic automation for B2B revenue teams. Audit, design, deploy. Production, with active clients.
+- [LangGraph + n8n AI SDR Agent](https://amoris.in/products#ai-sdr): a voice AI sales development agent that calls leads, qualifies them, handles objections with conversation memory, and writes outcomes back to CRM. Production-ready, self-hosted.
+- [intel-echo](https://www.npmjs.com/package/intel-echo): published npm package, v0.1.0. A compiler for reasoning — audits an AI conversation for where the reasoning exceeded its mandate. Detects authority and mandate drift, measures model confidence against evidence, produces audit-ready explanations. Live demo at https://amoris.in/intel-echo/
+- [Intel Echo GTM](https://amoris.in/intel-echo-gtm/): GTM messaging loop tool.
+- orbisojas: consciousness + AI synthesis platform, multi-prompt architecture, real paying clients. Paused 2025 on the pivot to GTM automation.
+
+## Who Amoris is for
+
+B2B small and mid-sized businesses and startup revenue teams where the go-to-market motion is active but manual — outbound research, lead qualification, follow-up and CRM hygiene consuming senior time. Amoris works remotely with clients worldwide; delivery is async-first and documentation-heavy, with IST covering morning US Eastern and evening APAC.
+
+## Common questions
+
+**What is an AI GTM engineer?** An AI GTM engineer designs and builds the automation layer a revenue team runs on — agent orchestration, data enrichment, workflow automation — rather than only configuring off-the-shelf sales tools. The role combines go-to-market judgment about which levers move revenue with the engineering ability to build and deploy the systems that pull them.
+
+**How is an agentic system different from a Zapier or Make automation?** A linear automation runs the same fixed steps every time. An agentic system reasons about what to do next based on what it has learned during the run. LangGraph holds that reasoning as a graph with state and memory, so the system can branch, retry, and handle cases that were never explicitly scripted.
+
+**Do clients own what Amoris builds?** Yes. Systems are deployed on the client's own infrastructure — workflows, prompts, database and code all belong to the client. No platform lock-in, no ongoing dependency on Amoris to keep a system running.
+
+**Is Praveen Shahi available for hire?** He is actively building Amoris and is open to founding GTM hire roles, AI GTM Engineer roles at Series A/B companies, and technical advisory or fractional GTM work. Remote-first, global.
+
+## Key pages
+
+- Home: https://amoris.in/
+- Products and shipped systems: https://amoris.in/products
+- Founder — Praveen Shahi: https://amoris.in/founder
+- Book a call: https://calendly.com/praveenshahi13/30min

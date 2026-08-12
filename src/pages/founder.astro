@@ -1,0 +1,316 @@
+---
+import Base from '../layouts/Base.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import FAQ from '../components/FAQ.astro';
+
+const title = "Praveen Shahi — AI GTM Engineer | LangGraph, Clay, n8n | Founder of Amoris";
+const description = "Praveen Shahi is an AI GTM Engineer who designs and deploys agentic automation for B2B revenue teams. Ten years running revenue organisations, now building production AI systems.";
+
+/* ProfilePage tells search engines this page IS the person's page,
+   and points at the Person entity declared in the site-wide graph. */
+const profileSchema = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "ProfilePage",
+  "@id": "https://amoris.in/founder#profilepage",
+  "url": "https://amoris.in/founder",
+  "name": "Praveen Shahi — AI GTM Engineer",
+  "mainEntity": { "@id": "https://amoris.in/founder#person" }
+});
+
+const story = [
+  {
+    beat: "Beat 1",
+    years: "2014–2023",
+    title: "Operator",
+    paras: [
+      "I spent ten years running revenue organisations — at Amazon, at Meta, and in sales leadership at Great Learning and CrunchPrep. Not advising on revenue. Carrying it.",
+      "At Great Learning I led a 150-person sales organisation doing $120K+ per month in net-new revenue, and built the go-to-market motion into LATAM and Africa. At CrunchPrep I scaled the business to ₹3.5Cr ARR and built a 30-member team from scratch. In both cases the job was designing the operating process, not just adding headcount to a problem.",
+      "That decade taught me the thing most AI builders never learn: which levers actually move revenue, and which ones just look busy.",
+    ],
+  },
+  {
+    beat: "Beat 2",
+    years: "2023–2025",
+    title: "The pivot",
+    paras: [
+      "In 2023 I stopped waiting for engineering. I learned to build.",
+      "I shipped orbisojas — a consciousness-and-AI platform with a multi-prompt architecture, real paying clients and live payments — entirely solo. Product, prompts, payment flow, deployment. No engineering team, no hand-off, no ticket queue.",
+      "It taught me what production actually costs. Not the demo. The reliability, the cost per call, the thing that breaks at 2am. That's a different education from building a prototype.",
+    ],
+  },
+  {
+    beat: "Beat 3",
+    years: "2025–2026",
+    title: "Field proof",
+    paras: [
+      "Then I took it into the field. At MsgKart I built go-to-market from zero — an AI automation SaaS selling to non-technical buyers, which is the hardest version of the problem.",
+      "I designed the outbound stack end to end: Clay for waterfall enrichment, LLMs for personalisation, n8n for orchestration. We closed the first clients with one SDR and zero ad spend. I also built the SPIN/MEDDIC playbook for selling AI to buyers who don't care what a model is.",
+      "That's the proof that the two halves connect. The stack worked because the GTM judgment shaped it, and the GTM worked because I could build the stack.",
+    ],
+  },
+  {
+    beat: "Beat 4",
+    years: "2026–now",
+    title: "AI GTM Engineer",
+    paras: [
+      "Today I run Amoris and ship LangGraph + n8n agent systems for B2B revenue teams. I also publish what I learn — intel-echo, an npm package for auditing where an AI's reasoning exceeded its mandate, came directly out of running these systems in production.",
+      "Most GTM engineers configure tools. I architect the systems and know which levers matter. I sell AI, and I build the AI I sell.",
+      "That combination is rare, and it's the entire reason this works.",
+    ],
+  },
+];
+
+const openTo = [
+  "Founding GTM hire — build the entire motion from zero",
+  "AI GTM Engineer — architect the automation layer for a revenue team",
+  "Technical advisory and fractional GTM",
+  "Remote-first, working globally",
+];
+
+const notAFit = [
+  "Pure engineering roles — I want to own the revenue layer too",
+  "Enterprise sales execution — I build the systems, not just operate them",
+  "Roles requiring full-time presence in a specific city",
+];
+
+const faqs = [
+  {
+    q: "Who is Praveen Shahi?",
+    a: "Praveen Shahi is an AI GTM Engineer and the founder of Amoris, based in Bengaluru and working globally. He spent ten years running revenue organisations at Amazon, Meta, Great Learning and CrunchPrep, then learned to build production AI systems, and now designs and deploys agentic automation for B2B go-to-market teams.",
+  },
+  {
+    q: "What makes an AI GTM Engineer different from a GTM engineer?",
+    a: "A GTM engineer configures and connects existing revenue tools. An AI GTM engineer architects the agentic layer underneath — multi-step reasoning in LangGraph, retrieval pipelines, enrichment waterfalls — and can ship it to production. The difference is building the system rather than assembling the stack.",
+  },
+  {
+    q: "What is Praveen Shahi's technical stack?",
+    a: "LangGraph for agent orchestration, Claude and other LLM APIs for reasoning, Clay for waterfall enrichment, n8n for webhook orchestration, PostgreSQL for state and memory, and Retell or ElevenLabs for voice. He has also published intel-echo, an npm package for LLM reasoning observability.",
+  },
+  {
+    q: "Is Praveen Shahi available for hire?",
+    a: "He is actively building Amoris and is open to founding GTM hire roles, AI GTM Engineer roles at Series A and Series B companies, and technical advisory or fractional GTM work. He works remote-first and globally.",
+  },
+];
+---
+<Base title={title} description={description} schema={profileSchema}>
+
+<section class="fd-head">
+  <Breadcrumbs crumbs={[{ label: 'Home', href: '/' }, { label: 'Founder' }]} />
+
+  <div class="fd-intro">
+    <div class="fd-portrait reveal" aria-hidden="true">
+      <!-- TODO: replace with /founder/praveen-shahi.webp once the photo is supplied -->
+      <span>PS</span>
+    </div>
+    <div class="fd-intro-copy">
+      <p class="section-eyebrow reveal">Founder</p>
+      <h1 class="reveal">Praveen Shahi<br/><span class="gradient-text">AI GTM Engineer</span></h1>
+      <p class="fd-lede reveal reveal-d1">
+        I spent ten years running revenue organisations at Amazon, Meta, Great Learning and CrunchPrep.
+        Then I learned to build the AI systems that make revenue scale.
+      </p>
+      <p class="fd-lede-2 reveal reveal-d2">
+        Today I run Amoris, an AI GTM agency, and ship LangGraph + n8n orchestration systems.
+        The combination is rare: I've carried a revenue number for a decade, and I ship production
+        AI systems. Most GTM engineers configure tools. I architect the systems and know which
+        levers matter.
+      </p>
+      <div class="fd-actions reveal reveal-d3">
+        <a href="https://calendly.com/praveenshahi13/30min" class="btn btn-primary" target="_blank" rel="noopener">Book 30 minutes →</a>
+        <a href="mailto:shahi@amoris.in" class="btn btn-outline">shahi@amoris.in</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="fd-story" id="story">
+  <p class="section-eyebrow reveal">How I got here</p>
+  <h2 class="reveal">Four beats, in order.</h2>
+
+  {story.map(s => (
+    <article class="fd-beat reveal">
+      <div class="fd-beat-meta">
+        <span class="fd-beat-n">{s.beat}</span>
+        <span class="fd-beat-years">{s.years}</span>
+        <h3>{s.title}</h3>
+      </div>
+      <div class="fd-beat-copy">
+        {s.paras.map(p => <p>{p}</p>)}
+      </div>
+    </article>
+  ))}
+</section>
+
+<section class="fd-looking" id="looking-for">
+  <p class="section-eyebrow reveal">What I'm looking for</p>
+  <h2 class="reveal">Actively building Amoris. Open to the right role.</h2>
+  <p class="fd-looking-lede reveal">
+    I'm running Amoris full time and taking on client work. I'm also open to a founding
+    GTM or AI GTM engineering seat at a Series A or B company — if it's the kind of role
+    where I'd own both the systems and the number.
+  </p>
+
+  <div class="grid-2 fd-fit">
+    <div class="card card-gold reveal">
+      <div class="card-label">Open to</div>
+      <ul class="fd-list fd-list-yes">
+        {openTo.map(i => <li>{i}</li>)}
+      </ul>
+    </div>
+    <div class="card reveal reveal-d1">
+      <div class="card-label">Not a fit</div>
+      <ul class="fd-list fd-list-no">
+        {notAFit.map(i => <li>{i}</li>)}
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="fd-links" id="connect">
+  <p class="section-eyebrow reveal">Connect</p>
+  <h2 class="reveal">Everything is verifiable.</h2>
+  <div class="grid-3 fd-link-grid">
+    <a class="card fd-link reveal" href="https://github.com/praveenshahi" target="_blank" rel="noopener">
+      <span class="fd-link-label">GitHub</span>
+      <span class="fd-link-v">github.com/praveenshahi</span>
+      <span class="fd-link-note">LangGraph, n8n, intel-echo, AI SDR agent</span>
+    </a>
+    <a class="card fd-link reveal reveal-d1" href="https://www.linkedin.com/in/praveenshahi13" target="_blank" rel="noopener">
+      <span class="fd-link-label">LinkedIn</span>
+      <span class="fd-link-v">in/praveenshahi13</span>
+      <span class="fd-link-note">Full work history and recommendations</span>
+    </a>
+    <a class="card fd-link reveal reveal-d2" href="https://www.npmjs.com/package/intel-echo" target="_blank" rel="noopener">
+      <span class="fd-link-label">npm</span>
+      <span class="fd-link-v">intel-echo</span>
+      <span class="fd-link-note">Published package, v0.1.0 — install it and read the source</span>
+    </a>
+    <a class="card fd-link reveal" href="mailto:shahi@amoris.in">
+      <span class="fd-link-label">Email</span>
+      <span class="fd-link-v">shahi@amoris.in</span>
+      <span class="fd-link-note">Fastest way to reach me</span>
+    </a>
+    <a class="card fd-link reveal reveal-d1" href="tel:+919100933191">
+      <span class="fd-link-label">Phone</span>
+      <span class="fd-link-v">+91 91009 33191</span>
+      <span class="fd-link-note">Bengaluru · IST</span>
+    </a>
+    <a class="card fd-link reveal reveal-d2" href="https://calendly.com/praveenshahi13/30min" target="_blank" rel="noopener">
+      <span class="fd-link-label">Calendar</span>
+      <span class="fd-link-v">Book 30 minutes</span>
+      <span class="fd-link-note">No deck. We'll talk about the actual problem.</span>
+    </a>
+  </div>
+</section>
+
+<section id="faq">
+  <p class="section-eyebrow reveal">Questions</p>
+  <h2 class="reveal">The short answers</h2>
+  <div class="fd-faq reveal">
+    <FAQ items={faqs} />
+  </div>
+</section>
+
+</Base>
+
+<style>
+  .fd-head { padding-top: 88px; padding-bottom: 40px; }
+  .fd-intro {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 44px;
+    align-items: start;
+    margin-top: 20px;
+  }
+  .fd-portrait {
+    width: 200px; height: 200px;
+    border-radius: var(--radius);
+    border: 1px solid rgba(240,168,36,0.24);
+    background: linear-gradient(150deg, var(--bg-raised), var(--bg-inset));
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+  }
+  .fd-portrait span {
+    font-family: var(--font-display);
+    font-size: 3.2rem;
+    font-weight: 700;
+    color: var(--gold);
+    opacity: 0.55;
+    letter-spacing: 0.04em;
+  }
+  .fd-intro-copy h1 { margin: 10px 0 22px; }
+  .fd-lede { font-size: 1.14rem; color: var(--text); max-width: 60ch; margin-bottom: 16px; }
+  .fd-lede-2 { font-size: 1rem; max-width: 64ch; margin-bottom: 30px; }
+  .fd-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+
+  .fd-story { border-top: 1px solid var(--border); padding-top: 64px; }
+  .fd-beat {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 44px;
+    padding: 36px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .fd-beat:last-of-type { border-bottom: none; }
+  .fd-beat-meta { position: sticky; top: 96px; align-self: start; }
+  .fd-beat-n {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 6px;
+  }
+  .fd-beat-years {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--gold);
+    margin-bottom: 8px;
+    font-variant-numeric: tabular-nums;
+  }
+  .fd-beat-meta h3 { font-size: 1.25rem; }
+  .fd-beat-copy { max-width: 68ch; display: flex; flex-direction: column; gap: 16px; }
+  .fd-beat-copy p { font-size: 1rem; }
+
+  .fd-looking { border-top: 1px solid var(--border); padding-top: 64px; }
+  .fd-looking-lede { max-width: 64ch; margin: 18px 0 40px; }
+  .fd-fit { align-items: start; }
+  .fd-list { list-style: none; display: flex; flex-direction: column; gap: 12px; margin-top: 6px; }
+  .fd-list li {
+    position: relative;
+    padding-left: 26px;
+    font-size: 0.95rem;
+    color: var(--text-dim);
+    line-height: 1.6;
+  }
+  .fd-list-yes li::before { content: '✓'; position: absolute; left: 0; color: var(--success); }
+  .fd-list-no li::before { content: '—'; position: absolute; left: 0; color: var(--text-muted); }
+
+  .fd-links { border-top: 1px solid var(--border); padding-top: 64px; }
+  .fd-link-grid { margin-top: 36px; }
+  .fd-link { display: flex; flex-direction: column; gap: 6px; transition: border-color 0.2s ease; }
+  .fd-link:hover { border-color: rgba(240,168,36,0.42); }
+  .fd-link:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+  .fd-link-label {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+  .fd-link-v { font-family: var(--font-display); font-size: 1.05rem; font-weight: 600; color: var(--gold); }
+  .fd-link-note { font-size: 0.85rem; color: var(--text-dim); line-height: 1.5; }
+
+  .fd-faq { margin-top: 32px; max-width: 78ch; }
+
+  @media (max-width: 860px) {
+    .fd-intro { grid-template-columns: 1fr; gap: 28px; }
+    .fd-portrait { width: 140px; height: 140px; }
+    .fd-portrait span { font-size: 2.4rem; }
+    .fd-beat { grid-template-columns: 1fr; gap: 16px; padding: 28px 0; }
+    .fd-beat-meta { position: static; }
+  }
+</style>
