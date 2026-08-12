@@ -2,72 +2,64 @@
 import Base from '../layouts/Base.astro';
 import FAQ from '../components/FAQ.astro';
 
-const title = "AI GTM Systems That Close Deals | Amoris — Agentic Automation for B2B Revenue Teams";
-const description = "Amoris designs and deploys agentic AI systems for B2B go-to-market teams. LangGraph orchestration, Clay waterfall enrichment, n8n webhook automation. Self-hosted, customer-owned.";
+const title = "AI GTM Systems That Actually Scale | Amoris — Agentic Automation for B2B Revenue Teams";
+const description = "Amoris designs and deploys agentic AI systems for B2B go-to-market teams. From audit to orchestration to live systems. LangGraph, Clay enrichment, n8n automation. Self-hosted, customer-owned.";
 
-/* The 4-beat story. A real chronology — the dates carry information,
-   which is why this is a timeline and not a set of feature cards. */
-const beats = [
+const cases = [
   {
-    years: "2014–2023",
-    role: "Operator",
-    body: "Ten years running revenue organisations — Amazon, Meta, and sales leadership at Great Learning and CrunchPrep. Carried the number: $120K+/month net-new, a 150-person org, ₹3.5Cr ARR built from zero.",
+    headline: "Scaling outbound with zero new headcount",
+    problem: "B2B SaaS with 3 SDRs, no qualification process. Lost 40% of leads in first call due to misfit profile.",
+    solution: "Built LangGraph voice agent + Clay enrichment layer. Automated lead qualification, call logging, and CRM sync.",
+    result: "Qualified 60% more leads. SDR time shifted from qualification → strategy. No new hires. Same budget.",
+    metric: "60% qualified",
   },
   {
-    years: "2023–2025",
-    role: "Builder",
-    body: "Learned to ship production AI solo. Built and launched orbisojas — a consciousness-and-AI platform with real paying clients and live payments. No engineering team. No hand-off.",
+    headline: "Turning raw lists into qualified opportunities",
+    problem: "Importing lists was manual and error-prone. No waterfall enrichment. High bounce rate on cold outreach.",
+    solution: "Multi-step enrichment via Clay (company size, tech stack, recent funding). Linked to n8n webhook for CRM scoring.",
+    result: "90% data accuracy. 3.5x cold email reply rate. List quality became competitive advantage.",
+    metric: "3.5x reply rate",
   },
   {
-    years: "2025–2026",
-    role: "Proof",
-    body: "Joined MsgKart and built go-to-market 0→1. Closed the first clients with one SDR and zero ad spend, on a Clay + LLM + n8n stack designed end to end.",
-  },
-  {
-    years: "2026–now",
-    role: "AI GTM Engineer",
-    body: "Running Amoris and shipping LangGraph + n8n agent systems. I sell AI, and I build the AI I sell. That combination is the whole point.",
+    headline: "Building the automation layer",
+    problem: "Growing startup with no GTM infrastructure. Using 12 disconnected tools. No data flow.",
+    solution: "Designed end-to-end orchestration system. LangGraph for multi-step qualification. n8n for webhook routing. PostgreSQL for conversation memory.",
+    result: "Single source of truth. 10x faster qualification. Self-hosted, customer-owned.",
+    metric: "10x faster",
   },
 ];
 
 const phases = [
   {
     n: "Audit",
-    body: "We map your revenue motion end to end — outbound, qualification, hand-off, CRM sync — and find the layer where the work is repetitive and the leakage is real. You get the map whether or not you hire us.",
-    stack: ["Workflow mapping", "Leakage analysis"],
+    body: "We map your entire GTM workflow—how leads flow in, where they stall, where humans are doing repetitive work. No assumptions. We see what's actually broken.",
   },
   {
     n: "Design",
-    body: "We design the agent orchestration: multi-step reasoning chains in LangGraph, retrieval over your own data, and waterfall enrichment that fills gaps a single provider misses.",
-    stack: ["LangGraph", "RAG pipelines", "Clay enrichment"],
+    body: "We design an orchestrated system using LangGraph for reasoning, Clay for waterfall enrichment, and n8n for webhook orchestration. Every decision is traceable to your specific workflow. You own the architecture.",
   },
   {
     n: "Deploy",
-    body: "We ship it into production with webhook orchestration, error handling and observability. Self-hosted on your infrastructure. You own the systems when we leave.",
-    stack: ["n8n", "PostgreSQL", "Self-hosted"],
+    body: "We self-host on your infrastructure. The system runs 24/7. We measure, optimize, and iterate based on production data. Not a one-off project—a living system.",
   },
 ];
 
 const faqs = [
   {
-    q: "What is an AI GTM engineer?",
-    a: "An AI GTM engineer designs and builds the automation layer that a revenue team runs on — agent orchestration, data enrichment, and workflow automation — rather than only configuring off-the-shelf sales tools. The role combines go-to-market judgment about which levers move revenue with the engineering ability to build and deploy the systems that pull them.",
-  },
-  {
-    q: "What does Amoris build?",
-    a: "Amoris builds agentic automation for B2B go-to-market teams: multi-step reasoning agents in LangGraph, retrieval pipelines over company data, waterfall lead enrichment with Clay and LLMs, and webhook orchestration in n8n. Every system is deployed self-hosted and owned by the client.",
-  },
-  {
-    q: "What stack does Amoris use?",
-    a: "LangGraph for agent orchestration and multi-step reasoning, Claude and other LLM APIs as the reasoning backbone, Clay for waterfall enrichment and personalisation, n8n for webhook orchestration, PostgreSQL for state and conversation memory, and Retell or ElevenLabs when a system needs voice.",
-  },
-  {
-    q: "Who is Amoris for?",
-    a: "B2B small and mid-sized businesses and startup revenue teams where the go-to-market motion is active but manual — outbound research, lead qualification, follow-up and CRM hygiene are eating senior time. Amoris works remotely with clients globally.",
+    q: "How is this different from Zapier or Make?",
+    a: "Zapier and Make are no-code connectors between off-the-shelf tools. Amoris builds custom reasoning systems — LangGraph agents that qualify leads, Clay enrichment layers, n8n workflows that don't exist yet. We're not connecting tools; we're building your GTM infrastructure from first principles.",
   },
   {
     q: "Do we own the systems Amoris builds?",
     a: "Yes. Systems are deployed on your own infrastructure and you own them outright — the workflows, the prompts, the database, the code. There is no platform lock-in and no dependency on Amoris to keep them running.",
+  },
+  {
+    q: "What does the audit actually cover?",
+    a: "We map your entire GTM workflow end-to-end: how leads flow in, where qualification happens (or doesn't), where humans are doing repetitive work, and where your current tools are creating bottlenecks. We deliver a written map of problems and opportunities. You get value from the audit whether or not you hire us for implementation.",
+  },
+  {
+    q: "What's the typical timeline?",
+    a: "Audit is 1-2 hours. Design is 1-2 weeks (depends on complexity). Deploy is 2-4 weeks. But we iterate continuously after launch, so the engagement doesn't end—the system keeps improving based on production data.",
   },
 ];
 ---
@@ -76,20 +68,19 @@ const faqs = [
 <!-- HERO -->
 <section class="hm-hero glow-section">
   <p class="section-eyebrow reveal">Amoris — AI GTM Agency</p>
-  <h1 class="reveal reveal-d1">AI GTM Systems<br/>That <span class="gradient-text">Close Deals</span>.</h1>
+  <h1 class="reveal reveal-d1">AI GTM Systems<br/>That <span class="gradient-text">Actually Scale</span></h1>
   <p class="hm-lede reveal reveal-d2">
-    We design and deploy agentic automation for B2B revenue teams. We don't just build AI —
-    we sell AI, and we engineer the systems it runs on.
+    Most SMBs automate parts of GTM. We automate the entire motion—from lead enrichment
+    to qualification to CRM handoff. One orchestrated system. No tool sprawl.
   </p>
   <div class="hm-cta reveal reveal-d3">
-    <a href="/products" class="btn btn-primary">See what we've built →</a>
-    <a href="https://calendly.com/praveenshahi13/30min" class="btn btn-outline" target="_blank" rel="noopener">Let's talk</a>
+    <a href="#cases" class="btn btn-primary">See how it works →</a>
+    <a href="https://calendly.com/praveenshahi13/30min" class="btn btn-outline" target="_blank" rel="noopener">Schedule a 20-min audit</a>
   </div>
   <ul class="hm-stack reveal reveal-d4" aria-label="Core technologies">
     <li class="tag tag-gold">LangGraph</li>
     <li class="tag">Clay</li>
     <li class="tag">n8n</li>
-    <li class="tag">RAG</li>
     <li class="tag">PostgreSQL</li>
     <li class="tag">Retell / ElevenLabs</li>
   </ul>
@@ -100,7 +91,7 @@ const faqs = [
   <div class="grid-3">
     <div class="card reveal">
       <div class="hm-stat-v"><span class="count-up" data-target="120" data-prefix="$" data-suffix="K+">$120K+</span></div>
-      <p class="hm-stat-l">Net-new revenue per month carried in a prior revenue leadership role.</p>
+      <p class="hm-stat-l">Net-new revenue per month in prior revenue leadership role.</p>
     </div>
     <div class="card reveal reveal-d1">
       <div class="hm-stat-v"><span class="count-up" data-target="150" data-suffix="+">150+</span></div>
@@ -113,35 +104,12 @@ const faqs = [
   </div>
 </section>
 
-<!-- THE JOURNEY -->
-<section id="journey">
-  <p class="section-eyebrow reveal">The journey</p>
-  <h2 class="reveal">Ten years carrying a number.<br/>Three years shipping the systems.</h2>
-  <p class="hm-section-lede reveal">
-    Most people who build AI have never carried a quota. Most people who carry a quota can't build.
-    This is how both ended up in one place.
-  </p>
-
-  <ol class="hm-beats">
-    {beats.map((b, i) => (
-      <li class={`hm-beat reveal reveal-d${i % 4}`}>
-        <div class="hm-beat-when">
-          <span class="hm-beat-years">{b.years}</span>
-          <span class="hm-beat-role">{b.role}</span>
-        </div>
-        <p class="hm-beat-body">{b.body}</p>
-      </li>
-    ))}
-  </ol>
-</section>
-
-<!-- WHAT WE DO -->
+<!-- METHODOLOGY -->
 <section id="how">
-  <p class="section-eyebrow reveal">What Amoris does</p>
+  <p class="section-eyebrow reveal">How we build your GTM automation stack</p>
   <h2 class="reveal">Audit <span class="hm-arrow">→</span> Design <span class="hm-arrow">→</span> Deploy</h2>
   <p class="hm-section-lede reveal">
-    We audit the go-to-market workflow, design the agent layer that removes the repetitive work,
-    and deploy it into production on your own infrastructure. Three phases, in that order, every time.
+    Three phases. Three outcomes. One system you own.
   </p>
 
   <div class="grid-3 hm-phases">
@@ -149,27 +117,80 @@ const faqs = [
       <article class={`card card-gold reveal reveal-d${i + 1}`}>
         <div class="card-label">{p.n}</div>
         <p class="hm-phase-body">{p.body}</p>
-        <ul class="hm-phase-stack">
-          {p.stack.map(s => <li class="tag">{s}</li>)}
-        </ul>
       </article>
     ))}
   </div>
 </section>
 
-<!-- RESULTS -->
-<section id="results">
-  <p class="section-eyebrow reveal">Results</p>
-  <h2 class="reveal">Running in production.<br/>Not in a slide deck.</h2>
-  <div class="grid-2 hm-results">
+<!-- CASES -->
+<section id="cases">
+  <p class="section-eyebrow reveal">Results in production</p>
+  <h2 class="reveal">Real systems. Real results.</h2>
+  <div class="grid-3 hm-cases">
+    {cases.map((c, i) => (
+      <div class={`card reveal reveal-d${i + 1}`}>
+        <h3 class="hm-case-headline">{c.headline}</h3>
+        <div class="hm-case-block">
+          <p class="hm-case-label">Problem:</p>
+          <p class="hm-case-text">{c.problem}</p>
+        </div>
+        <div class="hm-case-block">
+          <p class="hm-case-label">Solution:</p>
+          <p class="hm-case-text">{c.solution}</p>
+        </div>
+        <div class="hm-case-block">
+          <p class="hm-case-label">Result:</p>
+          <p class="hm-case-text">{c.result}</p>
+        </div>
+        <div class="hm-case-metric">
+          <span class="tag tag-gold">{c.metric}</span>
+        </div>
+      </div>
+    ))}
+  </div>
+</section>
+
+<!-- STACK -->
+<section id="stack">
+  <p class="section-eyebrow reveal">Built on production-grade architecture</p>
+  <h2 class="reveal">The stack that scales.</h2>
+  <div class="grid-3 hm-stack-cards">
     <div class="card reveal">
-      <h3>Closed with one SDR, zero ad spend</h3>
-      <p>At MsgKart, go-to-market was built 0→1 on an AI-assisted outbound stack — Clay enrichment, LLM personalisation, n8n orchestration. First clients closed with a single SDR and no marketing budget.</p>
+      <h3 class="hm-stack-headline">LangGraph</h3>
+      <p>Multi-step reasoning chains for qualification logic. Not one-shot API calls. Agents that reason, adapt, and refine.</p>
     </div>
     <div class="card reveal reveal-d1">
-      <h3>Systems that outlive the engagement</h3>
-      <p>Every deployment is self-hosted and customer-owned, running 24/7 with error handling and observability built in. When the engagement ends, the system keeps working and the client keeps the keys.</p>
+      <h3 class="hm-stack-headline">Clay + LLM Waterfall</h3>
+      <p>Deterministic enrichment (Clay first). Then LLM for intent signals and personalization. Highest accuracy, lowest cost.</p>
     </div>
+    <div class="card reveal reveal-d2">
+      <h3 class="hm-stack-headline">n8n Automation</h3>
+      <p>Real-time triggers. Event-driven workflows. Connects your entire GTM stack without custom code.</p>
+    </div>
+  </div>
+  <p class="hm-stack-supporting reveal">PostgreSQL for state management. Retell for voice AI. All self-hosted, fully owned by you.</p>
+</section>
+
+<!-- ICP -->
+<section id="icp">
+  <p class="section-eyebrow reveal">Built for growing B2B SaaS</p>
+  <p class="hm-icp-text reveal">
+    If you're a Series A/B SaaS with 5–50 person teams, outbound motion that's not scaling,
+    and no dedicated GTM infrastructure — we're a fit. If you're an enterprise or pre-product,
+    we're probably not.
+  </p>
+  <p class="hm-icp-supporting reveal">
+    We're not a no-code tool. We're a systems partner. This requires ownership and iteration from your side.
+  </p>
+</section>
+
+<!-- CTA -->
+<section id="cta">
+  <p class="section-eyebrow reveal">Ready to automate your GTM motion?</p>
+  <div class="hm-cta-buttons reveal">
+    <a href="https://calendly.com/praveenshahi13/30min" class="btn btn-primary" target="_blank" rel="noopener">Schedule a 20-min audit</a>
+    <a href="#cases" class="btn btn-outline">Explore case studies</a>
+    <a href="mailto:shahi@amoris.in" class="btn btn-outline">Email us</a>
   </div>
 </section>
 
@@ -255,10 +276,28 @@ const faqs = [
   .hm-results h3 { margin-bottom: 12px; }
   .hm-results p { font-size: 0.95rem; margin: 0; }
 
+  .hm-cases { margin-top: 40px; }
+  .hm-case-headline { margin-top: 0; margin-bottom: 16px; font-size: 1.1rem; }
+  .hm-case-block { margin-bottom: 14px; }
+  .hm-case-label { font-family: var(--font-mono); font-size: 0.75rem; font-weight: 600; color: var(--gold); letter-spacing: 0.04em; margin: 0 0 4px 0; text-transform: uppercase; }
+  .hm-case-text { font-size: 0.93rem; margin: 0; color: var(--text-dim); }
+  .hm-case-metric { margin-top: 18px; }
+
+  .hm-stack-cards { margin-top: 8px; }
+  .hm-stack-headline { margin-top: 0; margin-bottom: 12px; font-size: 1.05rem; }
+  .hm-stack-supporting { max-width: 70ch; margin: 32px 0 0 0; font-size: 0.95rem; }
+
+  .hm-icp-text { font-size: 1.05rem; max-width: 70ch; margin: 28px 0 0 0; }
+  .hm-icp-supporting { font-size: 0.95rem; color: var(--text-dim); margin: 16px 0 0 0; }
+
+  .hm-cta-buttons { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 28px; }
+
   .hm-faq { margin-top: 32px; max-width: 78ch; }
 
   @media (max-width: 860px) {
     .hm-hero { padding-top: 72px; }
     .hm-lede { font-size: 1.05rem; }
+    .hm-cta-buttons { flex-direction: column; }
+    .hm-cta-buttons .btn { width: 100%; }
   }
 </style>
