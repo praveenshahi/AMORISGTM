@@ -32,16 +32,28 @@ const cases = [
 
 const phases = [
   {
-    n: "Audit",
-    body: "We map your entire GTM workflow—how leads flow in, where they stall, where humans are doing repetitive work. No assumptions. We see what's actually broken.",
+    n: "01",
+    label: "Audit",
+    icon: "🔍",
+    problem: "Where are your leads actually bottlenecking?",
+    solution: "We map your entire GTM workflow end-to-end. How leads flow in, where qualification happens, where humans are doing repetitive work. You get a written map of problems and opportunities—value just from the audit.",
+    duration: "1-2 hours",
   },
   {
-    n: "Design",
-    body: "We design an orchestrated system using LangGraph for reasoning, Clay for waterfall enrichment, and n8n for webhook orchestration. Every decision is traceable to your specific workflow. You own the architecture.",
+    n: "02",
+    label: "Design",
+    icon: "📐",
+    problem: "How do you build something you'll actually own?",
+    solution: "We design the orchestrated system specific to your workflow. LangGraph for reasoning, Clay for enrichment, n8n for automation. Every decision is traceable. You review, approve, own the architecture.",
+    duration: "1-2 weeks",
   },
   {
-    n: "Deploy",
-    body: "We self-host on your infrastructure. The system runs 24/7. We measure, optimize, and iterate based on production data. Not a one-off project—a living system.",
+    n: "03",
+    label: "Deploy",
+    icon: "🚀",
+    problem: "How do you keep it running and improving?",
+    solution: "Self-hosted on your VPC. The system runs 24/7. We measure, optimize, and iterate based on real production data. It's not a one-off project—it's a living system that keeps improving.",
+    duration: "2-4 weeks + ongoing",
   },
 ];
 
@@ -93,16 +105,27 @@ const faqs = [
 <!-- METHODOLOGY -->
 <section id="how">
   <p class="section-eyebrow reveal">How we build your GTM automation stack</p>
-  <h2 class="reveal">Audit <span class="hm-arrow">→</span> Design <span class="hm-arrow">→</span> Deploy</h2>
+  <h2 class="reveal">Three phases. One orchestrated system.</h2>
   <p class="hm-section-lede reveal">
-    Three phases. Three outcomes. One system you own.
+    From discovery to live automation, we iterate concurrent so you own production-grade infrastructure in 6 weeks.
   </p>
 
-  <div class="grid-3 hm-phases">
+  <div class="hm-phases-container">
     {phases.map((p, i) => (
-      <article class={`card card-gold reveal reveal-d${i + 1}`}>
-        <div class="card-label">{p.n}</div>
-        <p class="hm-phase-body">{p.body}</p>
+      <article class={`hm-phase-card reveal reveal-d${i + 1}`}>
+        <div class="hm-phase-head">
+          <div class="hm-phase-badge">{p.n}</div>
+          <h3 class="hm-phase-label">{p.label}</h3>
+          <div class="hm-phase-icon">{p.icon}</div>
+        </div>
+
+        <div class="hm-phase-content">
+          <p class="hm-phase-question">{p.problem}</p>
+          <p class="hm-phase-answer">{p.solution}</p>
+          <p class="hm-phase-timeline">Timeline: {p.duration}</p>
+        </div>
+
+        {i < phases.length - 1 && <div class="hm-phase-connector" aria-hidden="true">→</div>}
       </article>
     ))}
   </div>
@@ -281,9 +304,101 @@ const faqs = [
   .hm-beat-body { max-width: 66ch; margin: 0; }
 
   .hm-arrow { color: var(--gold); font-weight: 400; }
-  .hm-phases { margin-top: 8px; align-items: start; }
-  .hm-phase-body { font-size: 0.95rem; margin-bottom: 18px; }
+
+  /* Phases: visual progression with icons, badges, problem-solution flow */
+  .hm-phases-container {
+    margin-top: 48px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  .hm-phase-card {
+    position: relative;
+    padding: 32px;
+    background: rgba(240, 168, 36, 0.04);
+    border: 1px solid rgba(240, 168, 36, 0.2);
+    border-radius: var(--radius-sm);
+    transition: all 0.3s ease;
+  }
+
+  .hm-phase-card:hover {
+    background: rgba(240, 168, 36, 0.06);
+    border-color: rgba(240, 168, 36, 0.3);
+  }
+
+  .hm-phase-head {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+
+  .hm-phase-badge {
+    font-family: var(--font-mono);
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--gold);
+    min-width: 60px;
+  }
+
+  .hm-phase-label {
+    margin: 0;
+    font-size: 1.25rem;
+    font-weight: 600;
+  }
+
+  .hm-phase-icon {
+    font-size: 2rem;
+    margin-left: auto;
+  }
+
+  .hm-phase-content {
+    margin-left: 76px;
+  }
+
+  .hm-phase-question {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text);
+    margin: 0 0 12px 0;
+  }
+
+  .hm-phase-answer {
+    font-size: 0.95rem;
+    color: var(--text-dim);
+    margin: 0 0 16px 0;
+    line-height: 1.6;
+  }
+
+  .hm-phase-timeline {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--gold);
+    letter-spacing: 0.04em;
+    margin: 0;
+    text-transform: uppercase;
+  }
+
+  .hm-phase-connector {
+    position: absolute;
+    bottom: -40px;
+    left: 48px;
+    color: var(--gold);
+    font-size: 1.4rem;
+    font-weight: 300;
+  }
+
   .hm-phase-stack { display: flex; gap: 6px; flex-wrap: wrap; list-style: none; }
+
+  @media (max-width: 768px) {
+    .hm-phases-container { gap: 24px; }
+    .hm-phase-card { padding: 24px; }
+    .hm-phase-head { flex-direction: column; align-items: flex-start; margin-bottom: 16px; }
+    .hm-phase-icon { margin-left: 0; margin-top: 4px; }
+    .hm-phase-content { margin-left: 0; }
+    .hm-phase-connector { display: none; }
+  }
 
   .hm-results { margin-top: 40px; }
   .hm-results h3 { margin-bottom: 12px; }
