@@ -57,6 +57,33 @@ const phases = [
   },
 ];
 
+const patterns = [
+  {
+    company: "Amazon",
+    learned: "Infrastructure at scale",
+    detail: "Designed systems for billions of users. Obsessed with reliability, cost per call, and what breaks at 2am.",
+    applied: "LangGraph multi-step reasoning. Production-grade error handling. State management that doesn't lose data.",
+  },
+  {
+    company: "Meta",
+    learned: "Growth loops & optimization",
+    detail: "Every feature measured. Funnels optimized to basis points. Viral mechanics designed, not hoped for.",
+    applied: "Clay enrichment waterfalls. Signal-first qualification logic. Every lead scored with evidence, not guesses.",
+  },
+  {
+    company: "Great Learning",
+    learned: "Operations & revenue scale",
+    detail: "Led 150-person sales org doing $120K+/month net-new. Built GTM motion into LATAM and Africa from zero.",
+    applied: "Audit methodology that finds where your money leaks. Process design that scales without new hires. Operations thinking built into every automation.",
+  },
+  {
+    company: "Leverage Edu",
+    learned: "Revenue models & GTM",
+    detail: "Complex buyer profiles. Long sales cycles. Built go-to-market from zero to sustainable revenue.",
+    applied: "SPIN/MEDDIC playbooks that actually convert. Sales automation that doesn't spam. Buyer psychology baked into outbound.",
+  },
+];
+
 const faqs = [
   {
     q: "How is this different from Zapier or Make?",
@@ -101,6 +128,27 @@ const faqs = [
 
 <!-- EXPERIENCE LOGOS -->
 <LogoTicker />
+
+<!-- WHY THESE PATTERNS MATTER -->
+<section id="patterns">
+  <p class="section-eyebrow reveal">Why these patterns matter</p>
+  <h2 class="reveal">Most GTM engineers configure tools. I architect the systems.</h2>
+  <p class="hm-section-lede reveal">
+    Ten years running revenue. Three years shipping production AI. The patterns compound.
+  </p>
+
+  <div class="hm-patterns-scroll reveal">
+    {patterns.map((p, i) => (
+      <article class="hm-pattern-card">
+        <div class="hm-pattern-company">{p.company}</div>
+        <div class="hm-pattern-learned">{p.learned}</div>
+        <p class="hm-pattern-detail">{p.detail}</p>
+        <div class="hm-pattern-divider" aria-hidden="true"></div>
+        <p class="hm-pattern-applied"><strong>Applied:</strong> {p.applied}</p>
+      </article>
+    ))}
+  </div>
+</section>
 
 <!-- METHODOLOGY -->
 <section id="how">
@@ -390,6 +438,108 @@ const faqs = [
   }
 
   .hm-phase-stack { display: flex; gap: 6px; flex-wrap: wrap; list-style: none; }
+
+  /* Patterns: horizontal scrollable cards showing what was learned and how it applies */
+  #patterns {
+    padding: 64px 48px;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+  #patterns h2 { margin: 12px 0 24px; }
+
+  .hm-patterns-scroll {
+    display: flex;
+    gap: 24px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 24px 0;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(240, 168, 36, 0.3) transparent;
+  }
+
+  .hm-patterns-scroll::-webkit-scrollbar {
+    height: 6px;
+  }
+
+  .hm-patterns-scroll::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .hm-patterns-scroll::-webkit-scrollbar-thumb {
+    background: rgba(240, 168, 36, 0.3);
+    border-radius: 3px;
+  }
+
+  .hm-patterns-scroll::-webkit-scrollbar-thumb:hover {
+    background: rgba(240, 168, 36, 0.5);
+  }
+
+  .hm-pattern-card {
+    flex-shrink: 0;
+    width: 280px;
+    padding: 24px;
+    background: rgba(240, 168, 36, 0.04);
+    border: 1px solid rgba(240, 168, 36, 0.16);
+    border-radius: var(--radius-sm);
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    transition: all 0.3s ease;
+  }
+
+  .hm-pattern-card:hover {
+    background: rgba(240, 168, 36, 0.08);
+    border-color: rgba(240, 168, 36, 0.32);
+    transform: translateY(-2px);
+  }
+
+  .hm-pattern-company {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 600;
+  }
+
+  .hm-pattern-learned {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--text);
+    margin: 0;
+  }
+
+  .hm-pattern-detail {
+    font-size: 0.9rem;
+    color: var(--text-dim);
+    margin: 0;
+    line-height: 1.6;
+  }
+
+  .hm-pattern-divider {
+    height: 1px;
+    background: rgba(240, 168, 36, 0.12);
+    margin: 6px 0;
+  }
+
+  .hm-pattern-applied {
+    font-size: 0.9rem;
+    color: var(--text-dim);
+    margin: 0;
+    line-height: 1.6;
+  }
+
+  .hm-pattern-applied strong {
+    color: var(--gold);
+    font-weight: 600;
+  }
+
+  @media (max-width: 768px) {
+    #patterns { padding: 48px 24px; }
+    .hm-pattern-card { width: 240px; padding: 20px; }
+  }
 
   @media (max-width: 768px) {
     .hm-phases-container { gap: 24px; }
